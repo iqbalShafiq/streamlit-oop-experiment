@@ -40,8 +40,10 @@ elif page == "View Coffee":
             st.write(coffee.price)
             st.write(coffee.producer)
             st.write(coffee.check_sold_out())
-            btn_sold_out = st.button("Sold Out", key=f"btn_sold_out_{index}")
+            
+            if not coffee.sold_out:
+                btn_sold_out = st.button("Sold Out", key=f"btn_sold_out_{index}")
 
-            if btn_sold_out and not coffee.sold_out:
-                coffee.set_sold_out()
-                st.rerun()
+                if btn_sold_out:
+                    coffee.set_sold_out()
+                    st.rerun()
