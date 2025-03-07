@@ -1,9 +1,6 @@
 import streamlit as st
 from libs import Coffee, Producer
 
-if "taste" not in st.session_state:
-    st.session_state.taste = ""
-
 if "coffees" not in st.session_state:
     st.session_state.coffees = []
 
