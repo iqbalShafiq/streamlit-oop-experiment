@@ -57,7 +57,7 @@ def update_coffee_availability(index):
     coffee.set_unavailable()
     st.session_state.coffees[index] = coffee
     save_to_csv()
-
+    st.rerun()
 
 st.title("Coffee Shop")
 page = st.sidebar.selectbox("Choose a page", ["Add Coffee", "View Coffee"])
@@ -82,8 +82,8 @@ elif page == "View Coffee":
 
             if coffee.available:
                 btn_unavailable = st.button(
-                    "Set Unavailable",
-                    key=f"btn_unavailable_{index}",
-                    on_click=update_coffee_availability,
-                    args=(index,),
+                    "Set Unavailable", key=f"btn_unavailable_{index}"
                 )
+
+                if btn_unavailable:
+                    update_coffee_availability(index)
