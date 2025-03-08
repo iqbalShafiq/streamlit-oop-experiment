@@ -1,33 +1,37 @@
-class Producer:
-    def __init__(self, name: str, location: str):
+class Barista:
+    def __init__(self, name: str, experience_level: str):
         self.name = name
-        self.location = location
+        self.experience_level = experience_level
 
     def __str__(self):
-        return f"{self.name} located in {self.location}"
+        return f"{self.name}, {self.experience_level} barista"
+
 
 class Coffee:
-    def __init__(self, taste: str, price):
-        self.taste = taste
+    def __init__(
+        self,
+        name: str,
+        price: float,
+        available=True,
+        barista=Barista("Unknown", "Novice"),
+    ):
+        self.name = name
         self.price = price
-        self.sold_out = False
-        self.producer = Producer("Kopi", "Indonesia")
+        self.available = available
+        self.barista = barista
 
-    def my_taste(self):
-        print("Hello my taste is " + self.taste)
+    def coffee_info(self):
+        print(f"Coffee: {self.name}, Price: {self.price}, Barista: {self.barista}")
 
-    def my_price(self):
-        print("Hello my price is " + str(self.price))
+    def set_unavailable(self):
+        self.available = False
+        print(f"{self.name} is now unavailable")
 
-    def set_sold_out(self):
-        self.sold_out = True
-        print(f"{self.taste} coffee has sold out")
-
-    def check_sold_out(self):
-        if self.sold_out:
-            return f"{self.taste} coffee has sold out"
+    def check_availability(self):
+        if self.available:
+            return f"{self.name} is available"
         else:
-            return f"{self.taste} coffee is available"
+            return f"{self.name} is unavailable"
 
-    def set_producer(self, producer: Producer):
-        self.producer = producer
+    def set_barista(self, barista: Barista):
+        self.barista = barista
