@@ -53,7 +53,7 @@ def submit():
     clear_form()
 
 
-def update_barista_availability(index):
+def update_coffee_availability(index):
     coffee.set_unavailable()
     st.session_state.coffees[index] = coffee
     save_to_csv()
@@ -84,6 +84,6 @@ elif page == "View Coffee":
                 btn_unavailable = st.button(
                     "Set Unavailable",
                     key=f"btn_unavailable_{index}",
-                    on_click=update_barista_availability,
+                    on_click=update_coffee_availability,
                     args=(index,),
                 )
