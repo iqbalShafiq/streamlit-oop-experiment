@@ -59,7 +59,7 @@ def update_barista_availability(index):
     save_to_csv()
 
 
-st.title("Coffee Shop")
+st.title("Order Coffee")
 page = st.sidebar.selectbox("Choose a page", ["Add Coffee", "View Coffee"])
 
 if page == "Add Coffee":
